@@ -8,13 +8,16 @@ const socketController = (socket) => {
       //  console.log('Cliente desconectado', socket.id );
     //});
 
+    socket.emit('ultimo-ticket',ticketControl.ultimo);
+
+
     socket.on('siguiente-ticket', ( payload, callback ) => {
         
-      const siguiente=ticketControl.siguiente();
+      let siguiente=ticketControl.siguiente();
       callback(siguiente);
 
       //Notificar que hay un nuevo ticket
-      
+
 
     })
 

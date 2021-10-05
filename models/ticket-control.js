@@ -55,7 +55,7 @@ class TicketControl {
         this.tickets.push(ticket);
 
         this.guardarDB();
-        return 'Ticket '+ this.numero;
+        return 'Ticket '+ ticket.numero;
     }
 
     atenderTicket(escritorio){

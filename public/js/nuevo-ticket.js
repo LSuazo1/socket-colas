@@ -8,7 +8,7 @@ const socket = io();
 socket.on('connect', () => {
 
     btnCrear.disabled=false;
-
+   
 });
 
 socket.on('disconnect', () => {
@@ -17,25 +17,14 @@ socket.on('disconnect', () => {
 
 });
 
+socket.on('ultimo-ticket',(ticket)=>{
+    lblNuevoTicket.innerText = "Ticket "+ ticket;
+   });
 
-
-
-socket.on('enviar-mensaje', (payload) => {
-    console.log( payload )
-})
-
-
-btnEnviar.addEventListener( 'click', () => {
-
-    const mensaje = txtMensaje.value;
-    const payload = {
-        mensaje,
-        id: '123ABC',
-        fecha: new Date().getTime()
-    }
+btnCrear.addEventListener( 'click', () => {
     
-    socket.emit( 'enviar-mensaje', payload, ( id ) => {
-        console.log('Desde el server', id );
+    socket.emit('siguiente-ticket', null, ( ticket ) => {
+       lblNuevoTicket.innerText = ticket;
     });
 
 });
